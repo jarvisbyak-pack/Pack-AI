@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#000000">
+<title>Pack AI</title>
+<link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body>
+<div class="scrim" id="scrim"></div>
+<aside class="sidebar" id="sidebar" aria-label="Pack AI navigation" aria-hidden="true">
+ <div class="sb-head"><div class="sb-brand"><div class="mark">P</div><span>Pack AI</span></div><button class="icon" id="closeSidebar" aria-label="Close sidebar"><svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
+ <div class="sb-controls"><label class="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="searchChats" type="search" placeholder="Search chats"></label><button class="new-chat" id="newChatSide">＋ &nbsp; New chat</button></div>
+ <div class="sb-scroll">
+  <nav><div class="group-title">Workspace</div>
+   <button class="nav-item active" data-view="chat"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Chat</button>
+   <button class="nav-item" data-view="files"><svg viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h5l2 2h7a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Files</button>
+   <button class="nav-item" data-view="transfers"><svg viewBox="0 0 24 24"><path d="M7 16V4m0 0-3 3m3-3 3 3M17 8v12m0 0 3-3m-3 3-3-3"/></svg>Transfers</button>
+   <button class="nav-item" data-view="activity"><svg viewBox="0 0 24 24"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg>Activity</button>
+   <button class="nav-item" data-view="checklist"><svg viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></svg>Development checklist</button>
+  </nav>
+  <div><div class="group-title">Recent</div><div id="history"></div></div>
+ </div>
+ <div class="sb-foot"><div class="profile"><div class="profile-avatar">A</div><div class="profile-meta"><span class="profile-name">Amal</span><span class="profile-sub">Local workspace</span></div></div><button class="icon" id="settingsShortcut" aria-label="Settings"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19 13.5a1.6 1.6 0 0 0 .3 1.8l.1.1-1.8 1.8-.1-.1a1.6 1.6 0 0 0-1.8-.3 1.6 1.6 0 0 0-1 1.5v.2h-2.5v-.2a1.6 1.6 0 0 0-1-1.5 1.6 1.6 0 0 0-1.8.3l-.1.1-1.8-1.8.1-.1a1.6 1.6 0 0 0 .3-1.8 1.6 1.6 0 0 0-1.5-1H6v-2.5h.2a1.6 1.6 0 0 0 1.5-1 1.6 1.6 0 0 0-.3-1.8l-.1-.1 1.8-1.8.1.1a1.6 1.6 0 0 0 1.8.3 1.6 1.6 0 0 0 1-1.5V4h2.5v.2a1.6 1.6 0 0 0 1 1.5 1.6 1.6 0 0 0 1.8-.3l.1-.1 1.8 1.8-.1.1a1.6 1.6 0 0 0-.3 1.8 1.6 1.6 0 0 0 1.5 1h.2v2.5h-.2a1.6 1.6 0 0 0-1.5 1z"/></svg></button></div>
+</aside>
+<div class="app">
+ <header class="top"><button class="icon" id="openSidebar" aria-label="Open navigation"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M9 4v16"/></svg></button><div class="brand"><div class="mark">P</div><div class="brand-meta"><span class="brand-name">Pack AI</span><span class="connection"><i class="dot" id="connectionDot"></i><span id="connectionText">Local UI · backend not connected</span></span></div></div><button class="icon" id="newChatTop" aria-label="New chat"><svg viewBox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></button></header>
+ <main class="stage" id="stage">
+  <section class="home" id="home"><h1 class="greeting">What would you like to build?</h1><p class="subgreeting">Your workspace for autonomous AI tasks.</p><div class="suggestions">
+   <button class="suggestion" data-prompt="Plan and execute a development task"><span>＋</span><span>Plan and execute a task</span><span>↗</span></button>
+   <button class="suggestion" data-prompt="Analyze the files I upload"><span>⌕</span><span>Analyze files</span><span>↗</span></button>
+   <button class="suggestion" data-prompt="Help me create an n8n automation workflow"><span>⌁</span><span>Create an automation workflow</span><span>↗</span></button>
+  </div></section>
+  <section class="messages" id="messages" hidden><div class="loader-row" id="loader" hidden><div class="avatar">P</div><div class="loader"><i></i><i></i><i></i><i></i></div></div></section>
+  <section class="view" id="filesView" hidden><div class="view-head"><div><div class="view-title">Files</div><div class="muted">Files selected in this browser session</div></div><button class="small-btn" id="uploadFiles">＋ Add files</button></div><input id="filePicker" type="file" multiple hidden><div class="panel" id="fileList"><div class="muted">No files added yet.</div></div><div class="notice">Files are currently held in this browser session only. Connect a backend storage endpoint to make them available to agents and across devices.</div></section>
+  <section class="view" id="transfersView" hidden><div class="view-head"><div><div class="view-title">Transfers</div><div class="muted">Upload and download activity</div></div></div><div class="panel" id="transferList"><div class="muted">No transfers yet.</div></div><div class="notice">Transfer history is local to this preview. Persistent transfer jobs require backend integration.</div></section>
+  <section class="view" id="activityView" hidden><div class="view-head"><div><div class="view-title">Activity</div><div class="muted">Agent execution timeline</div></div><span class="status-pill" id="taskStatus">Idle</span></div><div class="panel"><div class="panel-title">Current execution</div><div class="muted" id="currentTask">No task is running.</div><div class="progress"><span id="taskProgress"></span></div></div><div class="panel"><div class="panel-title">Execution events</div><div id="activityLog" class="muted">No backend events received.</div></div><div class="notice">Live traces, tool calls and task controls will become active when the Pack AI agent API is connected.</div></section>
+  <section class="view" id="checklistView" hidden><div class="view-head"><div><div class="view-title">Development checklist</div><div class="muted">Pack AI autonomous platform roadmap</div></div></div><div class="panel"><div id="checkProgressText" class="muted">0 of 85 items verified</div><div class="progress"><span id="checkProgress"></span></div></div><div id="checklist" class="checklist"></div><div class="notice">Checklist ticks are planning notes saved in this browser. They do not certify backend functionality. Only verified tests should be marked complete.</div></section>
+  <section class="view" id="settingsView" hidden><div class="view-head"><div><div class="view-title">Settings</div><div class="muted">Connection configuration</div></div></div><div class="panel settings-grid"><label class="field">Pack AI API base URL<input id="apiBase" placeholder="http://127.0.0.1:3000/api"></label><label class="field">Chat endpoint path<input id="chatPath" value="/chat"></label><label class="field">Health endpoint path<input id="healthPath" value="/health"></label><label class="field">Optional bearer token<input id="apiToken" type="password" placeholder="Stored only in this browser"></label><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="small-btn" id="saveSettings">Save connection</button><button class="small-btn" id="testConnection">Test backend</button></div><div class="muted" id="settingsStatus">No backend configured.</div></div><div class="notice">This preview expects a JSON chat API. Configure your actual endpoint contract before enabling autonomous execution. Never expose privileged API keys in a public frontend.</div></section>
+ </main>
+ <footer class="composer-wrap" id="composerWrap"><form class="composer" id="composer"><div class="chips" id="attachmentChips"></div><textarea id="prompt" rows="1" placeholder="Message Pack AI" autocomplete="off"></textarea><div class="composer-controls"><div class="tools"><button class="tool" id="attach" type="button" aria-label="Attach files"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button><button class="tool" id="mic" type="button" aria-label="Voice input"><svg viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0M12 19v3"/></svg></button></div><button class="small-btn" id="stopBtn" type="button" hidden>Stop</button><button class="send" id="send" type="submit" aria-label="Send" disabled><svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button></div></form></footer>
+</div>
+<script src="assets/js/app.js" defer></script>
+</body>
+</html>
