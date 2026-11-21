@@ -12,3 +12,6 @@
 @media(min-width:760px){.app{border-inline:1px solid rgba(255,255,255,.06)}.sidebar{width:300px}.home{padding-bottom:60px}.messages{padding-top:30px}}
 @media(max-width:390px){.top{padding-inline:10px}.composer-wrap{padding-inline:9px}.messages{padding-inline:13px}.greeting{font-size:23px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation-duration:3s!important}}
+
+/* Respect the hidden attribute for the animated loading row. */
+.loader-row[hidden]{display:none}
